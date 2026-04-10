@@ -55,6 +55,9 @@ Se aplicaron dos frameworks de scoring para ordenar las hipótesis según su pot
 | **ICE** | (Impact × Confidence) / Effort | Ignora cuántos usuarios impacta |
 | **RICE** | (Reach × Impact × Confidence) / Effort | Penaliza/premia el alcance real |
 
+![ICE vs RICE](images/01_ice_vs_rice_scatter.png)
+*Cambio de posición de las hipótesis al pasar de ICE a RICE. La H7 escala al primer lugar al incorporar el alcance.*
+
 La comparación entre rankings ICE y RICE reveló cambios significativos de posición: iniciativas con alto impacto individual pero bajo alcance (como una promoción de cumpleaños) pierden prioridad frente a iniciativas que impactan a la mayoría del tráfico (como un formulario de suscripción en todas las páginas).
 
 **Decisión:** Se priorizó la **Hipótesis 7** (formulario de suscripción) por su alcance prácticamente universal sobre el tráfico total.
@@ -79,6 +82,9 @@ El análisis siguió cuatro pasos para garantizar validez estadística:
 | Usuarios con muchos pedidos | > 2 pedidos | Percentil 99 |
 | Pedidos de precio extremo | > $415 | Percentil 95 |
 
+![Outliers en precios de pedidos](images/07_outliers_precios_pedidos.png)
+*Distribución de precios: la mayoría se concentra en valores bajos con pocos puntos extremos que distorsionan el promedio.*
+
 **4. Prueba estadística Mann-Whitney U** — en datos brutos y filtrados
 
 Se eligió Mann-Whitney (no prueba t) porque los datos de conversión y revenue **no siguen distribución normal**: están fuertemente sesgados a la derecha con una cola larga de outliers, condición en la que la prueba t pierde validez.
@@ -89,6 +95,12 @@ Se eligió Mann-Whitney (no prueba t) porque los datos de conversión y revenue 
 |---|---|---|---|
 | **Tasa de conversión** | 0.011 ✅ | **0.012 ✅** | **+18.2% a favor de Grupo B** |
 | Ticket promedio | 0.862 ❌ | 0.680 ❌ | -4.7% (no significativo) |
+
+![Conversión acumulada por grupo](images/05_conversion_acumulada_grupos.png)
+*Tasa de conversión acumulada: el Grupo B se separa consistentemente del A desde la segunda semana.*
+
+![Ingreso acumulado por grupo](images/02_ingreso_acumulado_grupos.png)
+*El salto abrupto en Grupo B alrededor del día 18 revela la presencia de outliers, no demanda orgánica.*
 
 **El hallazgo crítico:**
 La ventaja inicial de Grupo B en ingresos (+27.8% en ticket promedio) desapareció completamente al filtrar outliers, confirmando que era un artefacto estadístico. La mejora en conversión, en cambio, se mantuvo y se fortaleció — señal de que el efecto es real y robusto.
